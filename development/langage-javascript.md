@@ -6,18 +6,45 @@
 
 ## 🎓 J'ai compris et je peux expliquer
 
-- les `structures` de base du langage ❌ / ✔️
-- les normes `ecmascript` ❌ / ✔️
-- l'utilisation de l'`asynchrone` ❌ / ✔️
-- les spécifités du mot-clef `this` ❌ / ✔️
+- les `structures` de base du langage ✔️
+- les normes `ecmascript` ✔️
+- l'utilisation de l'`asynchrone` ✔️
+- les spécifités du mot-clef `this` ✔️
 
 ## 💻 Je code en Javascript
 
-### Un exemple de code commenté ❌ / ✔️
+### Un exemple de code commenté ✔️
 
-```javascript
-(e) => mc2;
-```
+// Je crée une variable qui permet de ranger les pays par ordre alphabétique
+const sortByCountryName = (a, b) => {
+if (a.name.common < b.name.common) return -1;
+if (a.name.common > b.name.common) return 1;
+return 0;
+};
+
+// Je crée l'option du select avec un map et qui les range par ordre alphabétique grâce au .sort
+const createOptions = (countries) => {
+const countriesList = document.getElementById("country-select");
+{
+countries.sort(sortByCountryName).map((country) => {
+// je crée l'option
+const newOption = document.createElement("option");
+newOption.text = country.name.common;
+newOption.value = country.name.common;
+newOption.style.color = "black";
+newOption.id = "form-country";
+// je la rajoute au select
+countriesList.appendChild(newOption);
+});
+}
+};
+
+const selectCountries = async () => {
+const countries = await getCountries();
+createOptions(countries);
+};
+
+selectCountries();
 
 ### Utilisation dans un projet ❌ / ✔️
 
@@ -60,4 +87,3 @@ Résolution :
 
 - J'ai ecrit un [tutoriel](...) ❌ / ✔️
 - J'ai fait une [présentation](...) ❌ / ✔️
-

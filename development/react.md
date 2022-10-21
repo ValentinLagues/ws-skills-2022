@@ -6,28 +6,49 @@
 
 ## 🎓 J'ai compris et je peux expliquer
 
-- l'état (_state_) pour contrôler l'affichage d'un composant ❌ / ✔️
-- les composants enfants et les _props_ qu'on leur passe ❌ / ✔️
-- le déclenchement d'instructions en fonction des actions de l'utilisateur ❌ / ✔️
-- le déclenchement d'instructions en fonction de l'étape du cycle de vie du composant ou du changement de valeur de ses props ❌ / ✔️
+- l'état (_state_) pour contrôler l'affichage d'un composant ✔️
+- les composants enfants et les _props_ qu'on leur passe ✔️
+- le déclenchement d'instructions en fonction des actions de l'utilisateur ✔️
+- le déclenchement d'instructions en fonction de l'étape du cycle de vie du composant ou du changement de valeur de ses props ✔️
 - l'usage d'un reducer (_useReducer_) pour gérer un état composé dans un composant
-- l'état stocké dans un composant avec un _context provider_ et accessible dans ses descendants via `useContext` ❌ / ✔️
+- l'état stocké dans un composant avec un _context provider_ et accessible dans ses descendants via `useContext` ✔️
 
 ## 💻 J'utilise
 
-### Un exemple personnel commenté ❌ / ✔️
+### Un exemple personnel commenté ✔️
 
-### Utilisation dans un projet ❌ / ✔️
+import { createContext, useState } from "react";
 
-[lien github](...)
+// création du context qui permettra d'utiliser React Player sur tous les composants inclus dans le provider
+const MusicContext = createContext({
+musicPlayer: false,
+setMusicPlayer: () => {},
+});
+export default MusicContext;
 
-Description :
+// création du provider qui permet d'appliquer le context aux composants souhaités
+export const MusicContextProvider = ({ children }) => {
+// variable d'état qui permet de lancer ou non React Player
+const [musicPlayer, setMusicPlayer] = useState(true);
+return (
+<MusicContext.Provider value={{ musicPlayer, setMusicPlayer }}>
+// le provider s'appliquera ainsi à tous les composants enfants
+{children}
+</MusicContext.Provider>
+);
+};
 
-### Utilisation en production si applicable❌ / ✔️
+### Utilisation dans un projet ✔️
 
-[lien du projet](...)
+https://github.com/ValentinLagues/Wild-Heroes
 
-Description :
+Description : 2eme projet effectué au sein de la formation en 5 mois de la Wild Code School entièrement réalisé en ReactJs en utilisant une API de super-héros
+
+### Utilisation en production si applicable ✔️
+
+https://valentinlagues.github.io/Olentzero-Music/
+
+Description : Hackathon réalisé en 31h dans le cadre de la formation en 5 mois de la Wild Code School en utilisant ReactJs
 
 ### Utilisation en environement professionnel ❌ / ✔️
 
